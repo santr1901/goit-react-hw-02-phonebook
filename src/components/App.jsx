@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form/Form';
-import css from './App.module.css';
+
 import { customRandom, nanoid } from 'nanoid';
 class App extends Component {
   state = {
