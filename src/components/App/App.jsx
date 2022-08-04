@@ -3,9 +3,9 @@ import { nanoid } from 'nanoid';
 
 import css from './App.module.css';
 
-import Form from './Form/Form';
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
+import Form from '../Form/Form';
+import Filter from '../Filter/Filter';
+import ContactList from '../ContactList/ContactList';
 
 class App extends Component {
   state = {

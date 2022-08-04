@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import css from './Form.module.css';
 import { nanoid } from 'nanoid';
+import css from './Form.module.css';
 
 class Form extends Component {
   state = {
