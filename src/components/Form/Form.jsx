@@ -3,13 +3,13 @@ import css from './Form.module.css';
 import { nanoid } from 'nanoid';
 
 class Form extends Component {
-  id = nanoid();
   state = {
     name: '',
+    number: '',
   };
   handleChange = event => {
-    const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
+    const { name, value, number } = event.currentTarget;
+    this.setState({ [name]: value, [number]: value });
   };
 
   addToContacts = event => {
@@ -19,28 +19,43 @@ class Form extends Component {
   };
 
   resetForm = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
-    const { name } = this.state;
+    const { name, number } = this.state;
     return (
       <form className={css.form} onSubmit={this.addToContacts}>
-        <label htmlFor={this.id}>
-          Name
+        <label className={css.form_input} htmlFor={nanoid()}>
+          <h4 className={css.input_title}>Name</h4>
           <input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-            id={this.id}
+            id={nanoid()}
             onChange={this.handleChange}
             value={name}
           />
         </label>
+        <label className={css.form_input} htmlFor={nanoid()}>
+          <h4 className={css.input_title}>Number</h4>
+          <input
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            id={nanoid()}
+            onChange={this.handleChange}
+            value={number}
+          />
+        </label>
 
-        <button type="subbmit">Add contact</button>
+        <button className={css.add_contact_btn} type="subbmit">
+          Add contact
+        </button>
       </form>
     );
   }
