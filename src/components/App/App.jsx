@@ -19,14 +19,12 @@ class App extends Component {
   };
 
   formSubmitData = ({ name, number }) => {
-    const arrName = this.state.contacts.map(contact => contact.name);
     const subData = {
       id: nanoid(),
       name,
       number,
     };
-
-    if (arrName.includes(subData.name)) {
+    if (this.state.contacts.find(contact => contact.name === subData.name)) {
       return alert(`${subData.name} is already in contact list`);
     }
     this.setState(prevState => ({
